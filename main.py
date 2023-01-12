@@ -28,16 +28,22 @@ while True:
         break
 
     elif event == "Create":
-        # if os.path.isdir("-IN1-") or os.path.isdir("-IN2-") or os.path.isdir("-IN3-") is False:
-        #     sg.popup_error("Check the paths")
-        #     exit()
-        # 
-        # elif values["-INb-"].isdigit() or values["-INs-"].isdigit() or values["-INk-"].isdigit() is False:
-        #     sg.popup_error("Not valid numbers!")
-        #     exit()
-        # 
-        # else:
-        __main__(values["-IN1-"], values["-IN2-"], values["-IN3-"],
-                 int(values["-INb-"]), int(values["-INs-"]), int(values["-INk-"]))
-        window.close()
+         if os.path.exists("-IN1-") or 
+            os.path.exists("-IN2-") or 
+            os.path.exists("-IN3-") is False:
+             sg.popup_error("Check the paths")
+             break
+             window()
+         
+         elif values["-INb-"].isnumeric() or 
+              values["-INs-"].isnumeric() or 
+              values["-INk-"].isnumeric() is False:
+             sg.popup_error("Not valid numbers!")
+             break
+             window()
+         
+         else:
+            __main__(values["-IN1-"], values["-IN2-"], values["-IN3-"],
+                     int(values["-INb-"]), int(values["-INs-"]), int(values["-INk-"]))
+             window.close()
         
