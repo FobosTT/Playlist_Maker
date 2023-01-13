@@ -1,14 +1,21 @@
-from creating_playlist import *
+from music_class import*
 import PySimpleGUI as sg
 
 
 def __main__(b_dir, s_dir, k_dir, b_num, s_num, k_num):
-    audio_files_result = audio_files_lists(b_dir, s_dir, k_dir)
-    organized_playlist = split_and_append(b_num, s_num, k_num,
-                                          audio_files_result[0],
-                                          audio_files_result[1],
-                                          audio_files_result[2])
-    playlist_to_file(values["-IN_NAME-"]+'.m3u', organized_playlist)
+    bachata = Music(b_dir, b_num, 0, [])
+    salsa = Music(s_dir, s_num, 0, [])
+    kizomba = Music(k_dir, k_num, 0, [])
+    bachata.files()
+    salsa.files()
+    kizomba.files()
+    while bachata.loop_index < len(bachata.music_list) \
+            or salsa.loop_index < len(salsa.music_list)\
+            or kizomba.loop_index < len(kizomba.music_list):
+        bachata.split()
+        salsa.split()
+        kizomba.split()
+    Music.playlist_to_file(values["-IN_NAME-"], Music.playlist)
 
 
 sg.set_options(border_width=0, margins=(0, 0), element_padding=(5, 3))
@@ -22,7 +29,6 @@ layout = [[sg.Text("Bachata music:"), sg.Input(key="-IN1-", change_submits=True)
           [sg.Exit()], [sg.Button("Create")]]
 
 window = sg.Window("Playlist Maker", layout, size=(600, 150))
-
 
 while True:
     event, values = window.read()
@@ -42,4 +48,3 @@ while True:
             __main__(values["-IN1-"], values["-IN2-"], values["-IN3-"],
                      int(values["-INb-"]), int(values["-INs-"]), int(values["-INk-"]))
             window.close()
-        
