@@ -36,15 +36,15 @@ while True:
     if event == sg.WIN_CLOSED or event == "Exit":
         break
     elif event == "Create":
-        if os.path.exists("-IN1-") or os.path.exists("-IN2-") or os.path.exists("-IN3-") is False:
-            sg.popup_error("Check the paths")
-            window.close()
-            window = sg.Window("Playlist Maker", layout, size=(600, 150))
-        elif values["-INb-"].isnumeric() or values["-INs-"].isnumeric() or values["-INk-"].isnumeric() is False:
-            sg.popup_error("Not valid numbers!")
-            window.close()
-            window = sg.Window("Playlist Maker", layout, size=(600, 150))
-        else:
-            __main__(values["-IN1-"], values["-IN2-"], values["-IN3-"],
-                     int(values["-INb-"]), int(values["-INs-"]), int(values["-INk-"]))
-            window.close()
+        # if os.path.exists("-IN1-") or os.path.exists("-IN2-") or os.path.exists("-IN3-") is False:
+        #     sg.popup_error("Check the paths")
+        #     window.close()
+        #     window = sg.Window("Playlist Maker", layout, size=(600, 150))
+        # elif values["-INb-"].isnumeric() or values["-INs-"].isnumeric() or values["-INk-"].isnumeric() is False:
+        #     sg.popup_error("Not valid numbers!")
+        #     window.close()
+        #     window = sg.Window("Playlist Maker", layout, size=(600, 150))
+        # else:
+        __main__(values["-IN1-"], values["-IN2-"], values["-IN3-"],
+                 int(values["-INb-"]), int(values["-INs-"]), int(values["-INk-"]))
+        window.close()
