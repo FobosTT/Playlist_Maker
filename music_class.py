@@ -28,6 +28,6 @@ class Music:
     @staticmethod
     def playlist_to_file(playlist_name, playlist):
         # Write the playlist to a file
-        with open(playlist_name, 'w') as f:
+        with open(playlist_name + ".m3u", 'w') as f:
             for audio_file in playlist:
                 f.write(audio_file + '\n')
