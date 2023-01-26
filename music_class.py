@@ -21,7 +21,7 @@ class Music:
 
     def files(self):
         for file in os.listdir(self.directory):
-            if file.endswith('.mp3') or file.endswith('.wav') or file.endswith('.ogg'):
+            if file.endswith('.mp3') or file.endswith('.wav') or file.endswith('.ogg') or file.endswith('.flac'):
                 self.music_list.append(os.path.join(self.directory, file))
         random.shuffle(self.music_list)
 
