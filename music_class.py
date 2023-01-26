@@ -28,6 +28,7 @@ class Music:
     @staticmethod
     def playlist_to_file(playlist_name, playlist):
         # Write the playlist to a file
-        with open(playlist_name, 'w') as f:
+        playlist_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), playlist_name)
+        with open(playlist_path + '.m3u', 'w') as f:
             for audio_file in playlist:
                 f.write(audio_file + '\n')
